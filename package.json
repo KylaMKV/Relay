@@ -1,0 +1,23 @@
+{
+  "name": "relay",
+  "version": "1.0.0",
+  "description": "Stores recordings from broadcasts",
+  "homepage": "https://github.com/KylaMKV/Relay#readme",
+  "bugs": {
+    "url": "https://github.com/KylaMKV/Relay/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KylaMKV/Relay.git"
+  },
+  "license": "WTFPL",
+  "author": "KylaMKV",
+  "type": "module",
+  "main": "main.ts",
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6"
+  }
+}
