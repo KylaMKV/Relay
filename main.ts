@@ -4,16 +4,15 @@ import insert from "./db/writes.ts";
 import type { Recording_new_row } from "./common.ts";
 import { get_recording_from_id, get_recordings_from_time } from "./db/gets.ts";
 import Recording from "./recording.ts";
-import { web_get_from_id, web_get_from_time } from "./web/gets.ts";
+import { web_get } from "./web/gets.ts";
 
 const site = express()
 
 // Safe to always run because of `IF NOT EXISTS` in SQL statement.
 init_db()
 
-site.get("/get/from_id", web_get_from_id)
+site.get("/get", web_get)
 
-site.get("/get/from_time", web_get_from_time)
 
 
 

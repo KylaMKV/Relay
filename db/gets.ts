@@ -6,16 +6,21 @@ import { db } from "./generic.ts";
  * @param id the specific ID of the recording to look for.
  * @param args Any additional arguments, placed after `WHERE id = {id}`. if continuing the `WHERE` statement, make sure to prepend with "AND" or "OR".
  */
-export function get_recording_from_id(id: number, args: string = ""): Recording | null {
-    const cmd = `SELECT * FROM Scans WHERE id = ? ${args};`
+export function get_recording_from_id(args: {id: number, objectify?: boolean, args?: string}): Recording | object | null {
+    if (args.objectify == undefined) args.objectify = true;
+    if (args.args == undefined) args.args = ""
 
-    const out = db.prepare(cmd).get(id);
+    const cmd = `SELECT * FROM Scans WHERE id = ? ${args.args};`
+
+    const out = db.prepare(cmd).get(args.id);
 
     if( out == undefined) {
         return null;
     }
 
-    return Object.assign(new Recording(), out)
+    if(args.objectify)
+        return Object.assign(new Recording(), out)
+    return out
 
 }
 

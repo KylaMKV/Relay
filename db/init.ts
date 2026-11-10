@@ -7,6 +7,7 @@ const init_str =
     end_time INTEGER,
     talkgroup TEXT,
     transcript TEXT,
+    broadcast TEXT,
     audio BLOB NOT NULL
 );`;
 
