@@ -1,5 +1,5 @@
 import express, {type Express, type Request, type Response} from "express";
-import { init_db } from "./db/init.ts";
+import { fix_db, init_db } from "./db/init.ts";
 import insert from "./db/writes.ts";
 import type { Recording_new_row } from "./common.ts";
 import { get_recording_from_id, get_recordings_from_time } from "./db/gets.ts";
@@ -10,6 +10,7 @@ const site = express()
 
 // Safe to always run because of `IF NOT EXISTS` in SQL statement.
 init_db()
+fix_db()
 
 site.get("/get", web_get)
 
